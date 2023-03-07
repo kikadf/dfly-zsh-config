@@ -1,7 +1,7 @@
 # dfly-zsh-config
 Zsh config to DragonFly
 
-* Dependencies:
+### Dependencies:
 - zsh
 - zsh-autosuggestions
 - zsh-syntax-highlighting
