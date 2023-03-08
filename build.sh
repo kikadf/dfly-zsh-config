@@ -59,8 +59,10 @@ build_p10k() {
 	git clone https://github.com/romkatv/powerlevel10k
 	cd powerlevel10k/gitstatus
 	./build -w
-	cd ..
-	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/{config,internal,gitstatus}
+	cd ../..
+	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/config
+	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/internal
+	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/gitstatus
 	find powerlevel10k -type f -exec install '{}' "${_D_zsh_confdir}/zsh-theme-{}" ';'
 	make -C ${_D_zsh_confdir}/zsh-theme-powerlevel10k zwc minify
 	msg "...powerlevel10k theme done." && cd ../..
