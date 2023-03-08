@@ -11,7 +11,7 @@ msg() {
 
 patching() {
 	for _patch in $(ls ../../patches/"$1"/); do
-		patch -Np1 -i $_patch
+		patch -Np1 -i ../../patches/"$1"/"$_patch"
 	done
 }
 
