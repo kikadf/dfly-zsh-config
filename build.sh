@@ -60,12 +60,12 @@ build_p10k() {
 	cd powerlevel10k/gitstatus
 	sed -i '' '/gitstatus_cxx=clang++12/d' build
 	./build -w
-	# to ./build/powerlevel10k
+	# go to ./build/powerlevel10k
 	cd ..
-	rm -rf -- .git gitstatus/src gitstatus/deps gitstatus/.vscode
-#	rm -rf gitstatus/src
-#	rm -rf gitstatus/deps
-#	rm -rf gitstatus/.vscode
+	rm -rf  .git
+	rm -rf gitstatus/src
+	rm -rf gitstatus/deps
+	rm -rf gitstatus/.vscode
 	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/config
 	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/internal
 	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/gitstatus/usrbin
