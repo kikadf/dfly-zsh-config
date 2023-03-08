@@ -70,7 +70,7 @@ build_p10k() {
 	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/internal
 	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/gitstatus/usrbin
 	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/gitstatus/docs
-	find . -type f -exec install '{}' "${_D_zsh_confdir}/zsh-theme-{}" ';'
+	find . -type f -exec install '{}' "${_D_zsh_confdir}/zsh-theme-powerlevel10k/{}" ';'
 	make -C ${_D_zsh_confdir}/zsh-theme-powerlevel10k minify
 	for file in *.zsh-theme internal/*.zsh gitstatus/*.zsh gitstatus/install; do
 		zsh -fc "emulate zsh -o no_aliases && zcompile -R -- $file.zwc $file"
