@@ -2,6 +2,7 @@
 # Install script to DragonFly Zsh config
 
 _D_zsh_confdir="$HOME/.config/zsh.d"
+_D_builddir=$(pwd)
 mkdir build
 
 # Small functions
@@ -36,7 +37,7 @@ build_mzc() {
 	install -m644 p10k.zsh "${_D_zsh_confdir}/p10k.zsh"
 	install -m644 p10k-portable.zsh "${_D_zsh_confdir}/p10k-portable.zsh"
 	install -m644 command-not-found.zsh "${_D_zsh_confdir}/command-not-found.zsh"
-	msg "...manjaro-zsh-config done." && cd ../..
+	msg "...manjaro-zsh-config done." && cd $_D_builddir
 }
 
 # zsh-history-substring-search
@@ -47,7 +48,7 @@ build_hss() {
 	git clone https://github.com/zsh-users/zsh-history-substring-search
 	cd zsh-history-substring-search
 	install -m644 zsh-history-substring-search.zsh "${_D_zsh_confdir}/zsh-history-substring-search.zsh"
-	msg "...history-substring-search done." && cd ../..
+	msg "...history-substring-search done." && cd $_D_builddir
 }
 
 # zsh-theme-powerlevel10k
@@ -72,10 +73,11 @@ build_p10k() {
 	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/gitstatus/docs
 	find . -type f -exec install '{}' "${_D_zsh_confdir}/zsh-theme-powerlevel10k/{}" ';'
 	make -C ${_D_zsh_confdir}/zsh-theme-powerlevel10k minify
+	cd ${_D_zsh_confdir}/zsh-theme-powerlevel10k
 	for file in *.zsh-theme internal/*.zsh gitstatus/*.zsh gitstatus/install; do
 		zsh -fc "emulate zsh -o no_aliases && zcompile -R -- $file.zwc $file"
 	done
-	msg "...powerlevel10k theme done." && cd ../..
+	msg "...powerlevel10k theme done." && cd $_D_builddir
 }
 
 # Work
