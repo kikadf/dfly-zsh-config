@@ -60,19 +60,22 @@ build_p10k() {
 	cd powerlevel10k/gitstatus
 	sed -i '' '/gitstatus_cxx=clang++12/d' build
 	./build -w
-	cd ..		# ./build/powerlevel10k
-	rm -rf .git
-	rm -rf gitstatus/src
-	rm -rf gitstatus/deps
-	rm -rf gitstatus/.vscode
-	cd ..		# ./build
+	# to ./build/powerlevel10k
+	cd ..
+	rm -rf -- .git gitstatus/src gitstatus/deps gitstatus/.vscode
+#	rm -rf gitstatus/src
+#	rm -rf gitstatus/deps
+#	rm -rf gitstatus/.vscode
 	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/config
 	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/internal
 	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/gitstatus/usrbin
 	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/gitstatus/docs
-	find powerlevel10k -type f -exec install '{}' "${_D_zsh_confdir}/zsh-theme-{}" ';'
-	make -C ${_D_zsh_confdir}/zsh-theme-powerlevel10k zwc minify
-	msg "...powerlevel10k theme done." && cd ..
+	find . -type f -exec install '{}' "${_D_zsh_confdir}/zsh-theme-{}" ';'
+	make -C ${_D_zsh_confdir}/zsh-theme-powerlevel10k minify
+	for file in *.zsh-theme internal/*.zsh gitstatus/*.zsh gitstatus/install; do
+		zsh -fc "emulate zsh -o no_aliases && zcompile -R -- $file.zwc $file"
+	done
+	msg "...powerlevel10k theme done." && cd ../..
 }
 
 # Work
