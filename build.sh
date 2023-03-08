@@ -60,13 +60,16 @@ build_p10k() {
 	cd powerlevel10k/gitstatus
 	sed -i '' '/gitstatus_cxx=clang++12/d' build
 	./build -w
-	cd ../..
+	cd ..		# ./build/powerlevel10k
+	rm -rf .git gitstatus/{src,deps,.vscode}
+	cd ..		# ./build
 	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/config
 	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/internal
-	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/gitstatus
+	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/gitstatus/usrbin
+	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/gitstatus/docs
 	find powerlevel10k -type f -exec install '{}' "${_D_zsh_confdir}/zsh-theme-{}" ';'
 	make -C ${_D_zsh_confdir}/zsh-theme-powerlevel10k zwc minify
-	msg "...powerlevel10k theme done." && cd ../..
+	msg "...powerlevel10k theme done." && cd ..
 }
 
 # Work
