@@ -73,7 +73,11 @@ msg "Start build Dragonfly zsh config:"
 build_mzc
 build_hss
 build_p10k
-cleaning
-msg "Ready."
+if [ "$1" != "-d" ]; then
+	cleaning
+	msg "Ready."
+else
+	msg "Finished without cleaning."
+fi
 
 exit 0
