@@ -2,6 +2,11 @@
 Zsh config to DragonFly
 
 ### Dependencies:
+- cmake (build)
+- gmake (build)
+- wget (build)
+- binutils (build)
+- perl5 (build)
 - zsh
 - zsh-autosuggestions
 - zsh-syntax-highlighting
