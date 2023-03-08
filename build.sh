@@ -62,7 +62,9 @@ build_p10k() {
 	./build -w
 	cd ..		# ./build/powerlevel10k
 	rm -rf .git
-	rm -rf gitstatus/{src,deps,.vscode}
+	rm -rf gitstatus/src
+	rm -rf gitstatus/deps
+	rm -rf gitstatus/.vscode
 	cd ..		# ./build
 	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/config
 	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/internal
