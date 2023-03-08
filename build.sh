@@ -29,12 +29,13 @@ build_mzc() {
 	git clone https://github.com/Chrysostomus/manjaro-zsh-config
 	cd manjaro-zsh-config
 	patching manjaro-zsh-config
-	install -D -m644 .zshrc  "${HOME}/.zshrc"
-	install -D -m644 manjaro-zsh-config "${_D_zsh_confdir}/manjaro-zsh-config"
-	install -D -m644 manjaro-zsh-prompt "${_D_zsh_confdir}/manjaro-zsh-prompt"
-	install -D -m644 p10k.zsh "${_D_zsh_confdir}/p10k.zsh"
-	install -D -m644 p10k-portable.zsh "${_D_zsh_confdir}/p10k-portable.zsh"
-	install -D -m644 command-not-found.zsh "${_D_zsh_confdir}/command-not-found.zsh"
+	install -d ${_D_zsh_confdir}
+	install -m644 .zshrc  "${HOME}/.zshrc"
+	install -m644 manjaro-zsh-config "${_D_zsh_confdir}/manjaro-zsh-config"
+	install -m644 manjaro-zsh-prompt "${_D_zsh_confdir}/manjaro-zsh-prompt"
+	install -m644 p10k.zsh "${_D_zsh_confdir}/p10k.zsh"
+	install -m644 p10k-portable.zsh "${_D_zsh_confdir}/p10k-portable.zsh"
+	install -m644 command-not-found.zsh "${_D_zsh_confdir}/command-not-found.zsh"
 	msg "...manjaro-zsh-config done." && cd ../..
 }
 
@@ -45,7 +46,7 @@ build_hss() {
 	cd build
 	git clone https://github.com/zsh-users/zsh-history-substring-search
 	cd zsh-history-substring-search
-	install -D -m644 zsh-history-substring-search.zsh "${_D_zsh_confdir}/zsh-history-substring-search.zsh"
+	install -m644 zsh-history-substring-search.zsh "${_D_zsh_confdir}/zsh-history-substring-search.zsh"
 	msg "...history-substring-search done." && cd ../..
 }
 
@@ -59,7 +60,8 @@ build_p10k() {
 	cd powerlevel10k/gitstatus
 	./build -w
 	cd ..
-	find powerlevel10k -type f -exec install -D '{}' "${_D_zsh_confdir}/zsh-theme-{}" ';'
+	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/{config,internal,gitstatus}
+	find powerlevel10k -type f -exec install '{}' "${_D_zsh_confdir}/zsh-theme-{}" ';'
 	make -C ${_D_zsh_confdir}/zsh-theme-powerlevel10k zwc minify
 	msg "...powerlevel10k theme done." && cd ../..
 }
