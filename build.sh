@@ -58,7 +58,7 @@ build_p10k() {
 	cd build
 	git clone https://github.com/romkatv/powerlevel10k
 	cd powerlevel10k/gitstatus
-	sed '/gitstatus_cxx=clang++12/d' -i "" build
+	sed -i '' '/gitstatus_cxx=clang++12/d' build
 	./build -w
 	cd ../..
 	install -d ${_D_zsh_confdir}/zsh-theme-powerlevel10k/config
