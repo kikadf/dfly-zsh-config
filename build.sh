@@ -29,12 +29,12 @@ build_mzc() {
 	git clone https://github.com/Chrysostomus/manjaro-zsh-config
 	cd manjaro-zsh-config
 	patching manjaro-zsh-config
-	install -D -m644 .zshrc -t "${HOME}/"															# patched
-	install -D -m644 manjaro-zsh-config -t "${_D_zsh_confdir}/"					# patched
-	install -D -m644 manjaro-zsh-prompt -t "${_D_zsh_confdir}/"					# patched
-	install -D -m644 p10k.zsh -t "${_D_zsh_confdir}/"
-	install -D -m644 p10k-portable.zsh -t "${_D_zsh_confdir}/"
-	install -D -m644 command-not-found.zsh -t "${_D_zsh_confdir}/"			# patched
+	install -D -m644 .zshrc  "${HOME}/.zshrc"
+	install -D -m644 manjaro-zsh-config "${_D_zsh_confdir}/manjaro-zsh-config"
+	install -D -m644 manjaro-zsh-prompt "${_D_zsh_confdir}/manjaro-zsh-prompt"
+	install -D -m644 p10k.zsh "${_D_zsh_confdir}/p10k.zsh"
+	install -D -m644 p10k-portable.zsh "${_D_zsh_confdir}/p10k-portable.zsh"
+	install -D -m644 command-not-found.zsh "${_D_zsh_confdir}/command-not-found.zsh"
 	msg "...manjaro-zsh-config done." && cd ../..
 }
 
@@ -45,7 +45,7 @@ build_hss() {
 	cd build
 	git clone https://github.com/zsh-users/zsh-history-substring-search
 	cd zsh-history-substring-search
-	install -D -m644 zsh-history-substring-search.zsh -t "${_D_zsh_confdir}/"
+	install -D -m644 zsh-history-substring-search.zsh "${_D_zsh_confdir}/zsh-history-substring-search.zsh"
 	msg "...history-substring-search done." && cd ../..
 }
 
