@@ -8,8 +8,8 @@ index 7f8ebe2..f96a1e7 100644
  SAVEHIST=10000
 -#export EDITOR=/usr/bin/nano
 -#export VISUAL=/usr/bin/nano
-+export EDITOR=/usr/bin/nano
-+export VISUAL=/usr/bin/nano
++export EDITOR=/usr/local/bin/nano
++export VISUAL=/usr/local/bin/nano
  WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
  
  
