@@ -1,8 +1,8 @@
 diff --git a/.zshrc b/.zshrc
-index 2bac7a5..d7be293 100644
+index 2bac7a5..864e7db 100644
 --- a/.zshrc
 +++ b/.zshrc
-@@ -1,10 +1,10 @@
+@@ -1,10 +1,14 @@
  # Use powerline
  USE_POWERLINE="true"
  # Source manjaro-zsh-configuration
@@ -16,4 +16,8 @@ index 2bac7a5..d7be293 100644
 -  source /usr/share/zsh/manjaro-zsh-prompt
 +if [[ -e $HOME/.config/zsh.d/manjaro-zsh-prompt ]]; then
 +  source $HOME/.config/zsh.d/manjaro-zsh-prompt
++fi
++# Disable bracketed paste on cons25
++if [[ $TERM == cons25 ]]; then
++  unset zle_bracketed_paste
  fi
