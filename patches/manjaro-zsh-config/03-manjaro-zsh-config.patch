@@ -1,5 +1,5 @@
 diff --git a/manjaro-zsh-config b/manjaro-zsh-config
-index 7f8ebe2..f96a1e7 100644
+index 7f8ebe2..dc537a3 100644
 --- a/manjaro-zsh-config
 +++ b/manjaro-zsh-config
 @@ -22,8 +22,8 @@ zstyle ':completion:*' cache-path ~/.zsh/cache
@@ -8,21 +8,23 @@ index 7f8ebe2..f96a1e7 100644
  SAVEHIST=10000
 -#export EDITOR=/usr/bin/nano
 -#export VISUAL=/usr/bin/nano
-+export EDITOR=/usr/local/bin/nano
-+export VISUAL=/usr/local/bin/nano
++export EDITOR=/usr/bin/nano
++export VISUAL=/usr/bin/nano
  WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
  
  
-@@ -57,7 +57,7 @@ bindkey '^[[Z' undo                                             # Shift+tab undo
+@@ -57,8 +57,9 @@ bindkey '^[[Z' undo                                             # Shift+tab undo
  ## Alias section
  alias cp="cp -i"                                                # Confirm before overwriting something
  alias df='df -h'                                                # Human-readable sizes
 -alias free='free -m'                                            # Show sizes in MB
 +alias free='vmstat && echo "--swap--" && swapinfo -h'                                            # Show sizes in MB
  alias gitu='git add . && git commit && git push'
++alias ls='ls -G'                                                  # Colorized output
  
  # Theming section  
-@@ -78,9 +78,9 @@ export LESS=-R
+ autoload -U compinit colors zcalc
+@@ -78,9 +79,9 @@ export LESS=-R
  
  ## Plugins section: Enable fish style features
  # Use syntax highlighting
@@ -34,7 +36,7 @@ index 7f8ebe2..f96a1e7 100644
  # bind UP and DOWN arrow keys to history substring search
  zmodload zsh/terminfo
  bindkey "$terminfo[kcuu1]" history-substring-search-up
-@@ -89,8 +89,8 @@ bindkey '^[[A' history-substring-search-up
+@@ -89,8 +90,8 @@ bindkey '^[[A' history-substring-search-up
  bindkey '^[[B' history-substring-search-down
  
  # Offer to install missing package if command is not found
@@ -45,3 +47,12 @@ index 7f8ebe2..f96a1e7 100644
      export PKGFILE_PROMPT_INSTALL_MISSING=1
  fi
  
+@@ -193,8 +194,3 @@ function mzc_termsupport_preexec {
+ autoload -U add-zsh-hook
+ add-zsh-hook precmd mzc_termsupport_precmd
+ add-zsh-hook preexec mzc_termsupport_preexec
+-
+-# File and Dir colors for ls and other outputs
+-export LS_OPTIONS='--color=auto'
+-eval "$(dircolors -b)"
+-alias ls='ls $LS_OPTIONS'
